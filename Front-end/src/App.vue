@@ -1,9 +1,38 @@
-<script setup lang="ts">
-import LoginPage from './pages/LoginPage.vue';
+<script lang="ts">
+import Routing from './pages/routing';
+
+export default
+{
+  data()
+  {
+    return {
+      index: 0,
+    }
+  },
+  mounted()
+  {
+    window.addEventListener('hashchange', () => {
+      this.index = Routing.routes.indexOf(window.location.hash.slice(1));
+		})
+  },
+  computed: {
+    currentPage()
+    {
+      return Routing.pages[this.index];
+    }
+  },
+  methods: {
+    updatePageIndex(pageIndex: number)
+    {
+      this.index = pageIndex;
+    }
+  }
+}
 </script>
 
 <template>
   <main>
-    <LoginPage />
+     <!-- CHange page on receipt of a change-page event from child component -->
+    <component :is="currentPage" @change-page="updatePageIndex($event)" />
   </main>
 </template>

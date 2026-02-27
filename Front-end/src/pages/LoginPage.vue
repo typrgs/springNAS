@@ -1,8 +1,15 @@
 <script lang="ts">
+import Routing from './routing';
+
 export default
 {
-  methods:
+  data()
   {
+    return {
+      pageIndex: 0
+    }
+  },
+  methods: {
     async login()
     {
       const username = (this.$refs.usernameRef as HTMLInputElement).value;
@@ -12,6 +19,7 @@ export default
       {
         const response = await fetch('http://localhost:8080/login', {
           method: 'POST',
+          credentials: 'include',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -27,6 +35,9 @@ export default
         {
           throw new Error(text)
         }
+
+        // emits a changePage event to the parent, who is listening for it
+        this.$emit('changePage', Routing.routes.indexOf('/home'));
       }
       catch(err)
       {
@@ -60,7 +71,7 @@ export default
           ref="passwordRef"
         />
   
-        <button type="submit" class="login-button">
+        <button type="submit" class="login-button" @click="login">
           Sign In
         </button>
       </div>
