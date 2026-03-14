@@ -3,12 +3,15 @@ import Routing from './routing';
 
 export default
 {
+  emits: ["changePage"],
+
   data()
   {
     return {
       pageIndex: 0
     }
   },
+  
   methods: {
     async login()
     {
