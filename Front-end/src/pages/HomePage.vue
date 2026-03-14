@@ -71,6 +71,7 @@ export default {
   padding: 20px;
 
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap; /* allow multiple rows */
   gap: 16px;
 }
