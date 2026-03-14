@@ -3,29 +3,32 @@ import Routing from './pages/routing';
 
 export default
 {
-  data()
-  {
-    return {
-      index: 0,
-    }
-  },
-  mounted()
-  {
-    window.addEventListener('hashchange', () => {
-      this.index = Routing.routes.indexOf(window.location.hash.slice(1));
-		})
-  },
   computed: {
     currentPage()
     {
       return Routing.pages[this.index];
     }
   },
+
   methods: {
     updatePageIndex(pageIndex: number)
     {
       this.index = pageIndex;
     }
+  },
+
+  data()
+  {
+    return {
+      index: 0,
+    }
+  },
+
+  mounted()
+  {
+    window.addEventListener('hashchange', () => {
+      this.index = Routing.routes.indexOf(window.location.hash.slice(1));
+		})
   }
 }
 </script>
