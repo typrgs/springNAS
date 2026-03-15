@@ -1,8 +1,9 @@
 <script lang="ts">
-import ImageStubAPI from '@/api/stub/imageStub';
 import Image from '@/types/image';
 import GalleryFull from '@/components/GalleryFull.vue'
 import GalleryThumb from '@/components/GalleryThumb.vue';
+import ImageImpl from '@/api/implementation/imageImpl';
+import { ref } from 'vue';
 
 export default {
   emits: ["changePage"],
@@ -13,14 +14,14 @@ export default {
   
   data() {
     return {
-      imageAPI: new ImageStubAPI(), // temporarily using stub API
-      images: [] as Image[],
+      imageAPI: new ImageImpl(),
+      images: ref([] as Image[]),
       selectImageIndex: -1
     }
   },
 
   mounted() {
-    this.images = this.imageAPI.getImages();
+    this.images = this.imageAPI.getImages(0);
   },
 
   methods: {
@@ -66,12 +67,11 @@ export default {
 /* Gallery container (flex layout for rows) */
 #gallery {
   width: 100%;
-  max-width: 90vw;
   margin: auto;
   padding: 20px;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   flex-wrap: wrap; /* allow multiple rows */
   gap: 16px;
 }

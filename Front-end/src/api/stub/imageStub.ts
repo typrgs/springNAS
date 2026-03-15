@@ -28,7 +28,7 @@ export default class ImageStub implements ImageAPI
     this._images.push(new Image("https://images.pexels.com/photos/196645/pexels-photo-196645.jpeg", 5616, 3744));
   }
 
-  getImages(): Image[]
+  getImages(page: number): Image[]
   {
     return this._images;
   }
