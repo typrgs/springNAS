@@ -1,11 +1,10 @@
-package com.springNAS.Back_end.Services.Stubs;
+package com.springNAS.Back_end.Services.Images;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.springNAS.Back_end.Services.Interfaces.ImageService;
 import com.springNAS.Back_end.Types.Image;
 
 @Service

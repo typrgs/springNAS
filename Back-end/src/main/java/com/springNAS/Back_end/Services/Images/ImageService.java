@@ -1,4 +1,4 @@
-package com.springNAS.Back_end.Services.Interfaces;
+package com.springNAS.Back_end.Services.Images;
 
 import java.util.List;
 

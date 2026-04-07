@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springNAS.Back_end.Services.Interfaces.ImageService;
+import com.springNAS.Back_end.Services.Images.ImageService;
 import com.springNAS.Back_end.Types.Image;
 
 @RestController
