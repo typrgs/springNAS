@@ -1,0 +1,15 @@
+services:
+  back-end:
+    build: ./Back-end
+    ports:
+    - 8080:8080
+    environment:
+      - USERNAME=${USERNAME}
+      - PASS=${PASS}
+
+  front-end:
+    build: ./Front-end
+    ports:
+      - 5173:5173
+    depends_on:
+      - back-end
