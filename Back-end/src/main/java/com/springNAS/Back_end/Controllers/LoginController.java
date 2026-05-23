@@ -1,6 +1,7 @@
 package com.springNAS.Back_end.Controllers;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,15 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/login")
 public class LoginController {
-  @Value("${USERNAME}")
-  private String username;
-  
-  @Value("${PASS}")
-  private String pass;
+  @Autowired
+  Environment env;
   
   @PostMapping()
   public boolean login(String username, String password)
   {
-    return this.username.equals(username) && this.pass.equalsIgnoreCase(password);    
+    return this.env.getProperty("default.username").equals(username) && this.env.getProperty("default.pass").equalsIgnoreCase(password);
   }
 }
