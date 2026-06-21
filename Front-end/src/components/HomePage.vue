@@ -3,14 +3,14 @@
 
 <template>
    <header class="topbar">
- 
-    <!-- Logo: static branding, no logic needed -->
     <div class="logo">SpringNAS</div>
  
     <!-- Current path: TS should render this from the active directory state,
          e.g. an array of path segments ['/', 'Documents', 'Projects'] -->
     <nav class="breadcrumb" aria-label="Current path">
-      <span class="breadcrumb-segment current">/</span>
+      <span class="breadcrumb-segment">/</span>
+      <span class="breadcrumb-segment">Home /</span>
+      <span class="breadcrumb-segment current">Photos /</span>
     </nav>
  
     <!-- Logout button: TS should attach a click handler to clear session/token
@@ -28,27 +28,6 @@
       <span class="col col-name">Name</span>
       <span class="col col-type">Type</span>
     </div>
-    <div class="explorer-row" data-type="folder|file" role="button" tabindex="0">
-      <span class="col col-icon">
-        <img
-          alt="File Icon"
-          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 140'%3E%3Cpath d='M20 10 H75 L100 35 V130 H20 Z' fill='white' stroke='%23555' stroke-width='3'/%3E%3Cpath d='M75 10 V35 H100' fill='%23f0f0f0' stroke='%23555' stroke-width='3'/%3E%3Cline x1='35' y1='55' x2='85' y2='55' stroke='%23888' stroke-width='4'/%3E%3Cline x1='35' y1='70' x2='85' y2='70' stroke='%23888' stroke-width='4'/%3E%3Cline x1='35' y1='85' x2='75' y2='85' stroke='%23888' stroke-width='4'/%3E%3C/svg%3E"
-        />
-      </span>
-      <span class="col col-name">Dummy Item</span>
-      <span class="col col-type">JPG</span>
-    </div>
-        <div class="explorer-row" data-type="folder|file" role="button" tabindex="0">
-      <span class="col col-icon">
-        <img
-          alt="Folder Icon"
-          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23FFC107' stroke='%23B8860B' stroke-width='1.5' d='M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6z'/%3E%3C/svg%3E"
-        />
-      </span>
-      <span class="col col-name">Dummy Item</span>
-      <span class="col col-type">DIR</span>
-    </div>
- 
     <!-- File/folder list: empty by default. TS should populate this container
          at runtime by rendering one ".explorer-row" per item returned from
          the directory listing API.
@@ -66,8 +45,28 @@
          - data-type="file" rows: clicking/dblclicking should open, preview,
            or download the file as appropriate.
     -->
-    <div class="explorer-list" id="explorer-list"></div>
- 
+    <div class="explorer-list" id="explorer-list">
+      <div class="explorer-row" data-type="folder|file" role="button" tabindex="0">
+        <span class="col col-icon">
+          <img
+            alt="File Icon"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 140'%3E%3Cpath d='M20 10 H75 L100 35 V130 H20 Z' fill='white' stroke='%23555' stroke-width='3'/%3E%3Cpath d='M75 10 V35 H100' fill='%23f0f0f0' stroke='%23555' stroke-width='3'/%3E%3Cline x1='35' y1='55' x2='85' y2='55' stroke='%23888' stroke-width='4'/%3E%3Cline x1='35' y1='70' x2='85' y2='70' stroke='%23888' stroke-width='4'/%3E%3Cline x1='35' y1='85' x2='75' y2='85' stroke='%23888' stroke-width='4'/%3E%3C/svg%3E"
+          />
+        </span>
+        <span class="col col-name">Dummy Item</span>
+        <span class="col col-type">JPG</span>
+      </div>
+          <div class="explorer-row" data-type="folder|file" role="button" tabindex="0">
+        <span class="col col-icon">
+          <img
+            alt="Folder Icon"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23FFC107' stroke='%23B8860B' stroke-width='1.5' d='M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6z'/%3E%3C/svg%3E"
+          />
+        </span>
+        <span class="col col-name">Dummy Item</span>
+        <span class="col col-type">DIR</span>
+      </div>
+    </div>
   </main>
 </template>
 
