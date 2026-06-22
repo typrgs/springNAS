@@ -1,4 +1,4 @@
-package com.springNAS.Back_end.Controllers;
+package com.springNAS.Back_end.Controllers.AuthController;
 
 import java.time.Duration;
 
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springNAS.Back_end.Controllers.Types.Credentials;
+import com.springNAS.Back_end.Controllers.AuthController.Types.Credentials;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
   @Autowired
   Environment env;
@@ -49,14 +49,14 @@ public class AuthController {
     return nasAuth != null;
   }
 
-  @DeleteMapping("/reset")
-  public ResponseEntity<Object> resetAuth(@CookieValue(name = "nasAuth", required = false) String nasAuth)
+  @DeleteMapping("/logout")
+  public ResponseEntity<Object> logout(@CookieValue(name = "nasAuth", required = false) String nasAuth)
   {
     ResponseCookie cookie = ResponseCookie.from("nasAuth", nasAuth)
                           .httpOnly(true)
                           .secure(true)
                           .path("/")
-                          .maxAge(Duration.ofSeconds(0))
+                          .maxAge(Duration.ofSeconds(0)) // unset auth cookie
                           .sameSite("None")
                           .build();
 

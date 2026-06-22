@@ -1,4 +1,20 @@
 <script setup lang="ts">
+  import { useRouter } from 'vue-router'
+  
+  const router = useRouter()
+
+  async function logout() {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/logout`, {
+        credentials: 'include'
+      })
+
+      if(response.ok) {
+        router.push('/')
+      }
+    }
+    catch (e) { console.log(e) }
+  }
 </script>
 
 <template>
@@ -15,7 +31,7 @@
  
     <!-- Logout button: TS should attach a click handler to clear session/token
          and redirect to the sign-in page -->
-    <button class="btn-logout" id="logout-btn" type="button">Logout</button>
+    <button class="btn-logout" id="logout-btn" type="button" @click="logout">Logout</button>
  
   </header>
  
