@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import LoginPage from './components/LoginPage.vue'
-import HomePage from './components/HomePage.vue'
+import LoginPage from '@/pages/LoginPage.vue'
+import HomePage from '@/pages/HomePage.vue'
+import { API_URL } from './util'
 
 const routes = [
   { path: '/', name: "login", component: LoginPage},
@@ -14,9 +15,8 @@ export const router = createRouter({
 )
 
 router.beforeResolve(async (to, from) => {
-  console.log(from.name)
   if(to.name === 'login') {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/status`, {
+    const response = await fetch(`${API_URL}/api/auth/status`, {
       method: "GET",
       credentials: 'include'
     })
@@ -29,7 +29,7 @@ router.beforeResolve(async (to, from) => {
     } else console.log(response.statusText)
   }
   else {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/status`, {
+    const response = await fetch(`${API_URL}/api/auth/status`, {
       method: "GET",
       credentials: 'include'
     })
